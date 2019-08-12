@@ -4,6 +4,8 @@ library(shinyWidgets)
 library(bs4Dash)
 library(plotly)
 library(echarts4r)
+library(shinyjs)
+library(digest)
 
 # river charts
 dates <- seq.Date(Sys.Date() - 30, Sys.Date(), by = "day")
@@ -702,10 +704,6 @@ gallery_1_tab <- bs4TabItem(
                 my entire soul, like these sweet mornings of 
                 spring which I enjoy with my whole heart."
             )
-        ),
-        bs4Card(
-            title = "Loading State",
-            bs4Loading()
         )
     ),
     fluidRow(
