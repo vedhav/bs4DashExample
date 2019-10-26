@@ -5,191 +5,164 @@ ui = tags$div(
         tags$link(rel = "shortcut icon", type = "image/png", href = "favicon.png")
     ),
     useShinyjs(),
-    fluidPage(
-        align = "center",
-        fluidRow(
-            id = "login_page_ui",
-            style = "margin-top: 180px;",
-            column(4),
-            column(
-                width = 4,
-                wellPanel(
-                    id = "login_ui",
-                    textInput("login_user_name", "Username"),
-                    passwordInput("login_password", "Password"),
-                    actionButton("login_button", "Log in")
+    tags$div(
+        id = "main_page_ui",
+        bs4DashPage(
+            sidebar_collapsed = TRUE,
+            navbar = bs4DashNavbar(
+                status = "white",
+                "I can write text in the navbar!",
+                rightUi = bs4DropdownMenu(
+                    show = FALSE,
+                    labelText = "!",
+                    status = "danger",
+                    src = "https://www.google.fr",
+                    bs4DropdownMenuItem(
+                        text = "message 1",
+                        date = "today"
+                    ),
+                    bs4DropdownMenuItem(
+                        text = "message 2",
+                        date = "yesterday"
+                    )
                 )
-            )
-        )
-    ),
-    shinyjs::hidden(
-        tags$div(
-            id = "main_page_ui",
-            bs4DashPage(
-                sidebar_collapsed = TRUE,
-                navbar = bs4DashNavbar(
-                    status = "white",
-                    "I can write text in the navbar!",
-                    rightUi = bs4DropdownMenu(
-                        show = FALSE,
-                        labelText = "!",
-                        status = "danger",
-                        src = "https://www.google.fr",
-                        bs4DropdownMenuItem(
-                            text = "message 1",
-                            date = "today"
-                        ),
-                        bs4DropdownMenuItem(
-                            text = "message 2",
-                            date = "yesterday"
-                        )
-                    )
-                ),
-                sidebar = bs4DashSidebar(
-                    skin = "light",
-                    status = "primary",
-                    title = "bs4Dash",
-                    brandColor = "primary",
-                    url = "https://www.google.fr",
-                    src = "https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg",
-                    elevation = 3,
-                    opacity = 0.8,
-                    bs4SidebarMenu(
-                        id = "current_tab",
-                        bs4SidebarHeader("Cards"),
-                        bs4SidebarMenuItem(
-                            "Basic cards",
-                            tabName = "cards",
-                            icon = "sliders"
-                        ),
-                        bs4SidebarMenuItem(
-                            "Social cards",
-                            tabName = "socialcards",
-                            icon = "id-card"
-                        ),
-                        bs4SidebarMenuItem(
-                            "Tab cards",
-                            tabName = "tabcards",
-                            icon = "picture-o"
-                        ),
-                        bs4SidebarMenuItem(
-                            "Sortable cards",
-                            tabName = "sortablecards",
-                            icon = "object-ungroup"
-                        ),
-                        bs4SidebarMenuItem(
-                            "Stats elements",
-                            tabName = "statsboxes",
-                            icon = "bank"
-                        ),
-                        bs4SidebarHeader("Boxes"),
-                        bs4SidebarMenuItem(
-                            "Basic boxes",
-                            tabName = "boxes",
-                            icon = "desktop"
-                        ),
-                        bs4SidebarMenuItem(
-                            "Value/Info boxes",
-                            tabName = "valueboxes",
-                            icon = "suitcase"
-                        ),
-                        bs4SidebarHeader("BS4 gallery"),
-                        bs4SidebarMenuItem(
-                            text = "Galleries",
-                            icon = "cubes",
-                            startExpanded = FALSE,
-                            bs4SidebarMenuSubItem(
-                                text = HTML(
-                                    paste(
-                                        "Gallery 1",
-                                        bs4Badge(
-                                            "new",
-                                            position = "right",
-                                            status = "danger"
-                                        )
+            ),
+            sidebar = bs4DashSidebar(
+                skin = "light",
+                status = "primary",
+                title = "bs4Dash",
+                brandColor = "primary",
+                url = "https://www.google.fr",
+                src = "https://adminlte.io/themes/AdminLTE/dist/img/user2-160x160.jpg",
+                elevation = 3,
+                opacity = 0.8,
+                bs4SidebarMenu(
+                    id = "current_tab",
+                    bs4SidebarHeader("Cards"),
+                    bs4SidebarMenuItem(
+                        "Basic cards",
+                        tabName = "cards",
+                        icon = "sliders"
+                    ),
+                    bs4SidebarMenuItem(
+                        "Social cards",
+                        tabName = "socialcards",
+                        icon = "id-card"
+                    ),
+                    bs4SidebarMenuItem(
+                        "Tab cards",
+                        tabName = "tabcards",
+                        icon = "picture-o"
+                    ),
+                    bs4SidebarMenuItem(
+                        "Sortable cards",
+                        tabName = "sortablecards",
+                        icon = "object-ungroup"
+                    ),
+                    bs4SidebarMenuItem(
+                        "Stats elements",
+                        tabName = "statsboxes",
+                        icon = "bank"
+                    ),
+                    bs4SidebarHeader("Boxes"),
+                    bs4SidebarMenuItem(
+                        "Basic boxes",
+                        tabName = "boxes",
+                        icon = "desktop"
+                    ),
+                    bs4SidebarMenuItem(
+                        "Value/Info boxes",
+                        tabName = "valueboxes",
+                        icon = "suitcase"
+                    ),
+                    bs4SidebarHeader("BS4 gallery"),
+                    bs4SidebarMenuItem(
+                        text = "Galleries",
+                        icon = "cubes",
+                        startExpanded = FALSE,
+                        bs4SidebarMenuSubItem(
+                            text = HTML(
+                                paste(
+                                    "Gallery 1",
+                                    bs4Badge(
+                                        "new",
+                                        position = "right",
+                                        status = "danger"
                                     )
-                                ),
-                                tabName = "gallery1",
-                                icon = "circle-thin"
+                                )
                             ),
-                            bs4SidebarMenuSubItem(
-                                text = HTML(
-                                    paste(
-                                        "Gallery 2",
-                                        bs4Badge(
-                                            "!",
-                                            position = "right",
-                                            status = "success"
-                                        )
+                            tabName = "gallery1",
+                            icon = "circle-thin"
+                        ),
+                        bs4SidebarMenuSubItem(
+                            text = HTML(
+                                paste(
+                                    "Gallery 2",
+                                    bs4Badge(
+                                        "!",
+                                        position = "right",
+                                        status = "success"
                                     )
-                                ),
-                                tabName = "gallery2",
-                                icon = "circle-thin"
-                            )
+                                )
+                            ),
+                            tabName = "gallery2",
+                            icon = "circle-thin"
                         )
                     )
+                )
+            ),
+            body = bs4DashBody(
+                bs4TabItems(
+                    basic_cards_tab,
+                    social_cards_tab,
+                    tab_cards_tab,
+                    sortable_cards_tab,
+                    statsboxes_tab,
+                    boxes_tab,
+                    value_boxes_tab,
+                    gallery_1_tab,
+                    gallery_2_tab
+                )
+            ),
+            controlbar = bs4DashControlbar(
+                skin = "light",
+                title = "My right sidebar",
+                setSliderColor(sliderId = 1, "black"),
+                sliderInput(
+                    inputId = "obs",
+                    label = "Number of observations:",
+                    min = 0,
+                    max = 1000,
+                    value = 500
                 ),
-                body = bs4DashBody(
-                    bs4TabItems(
-                        basic_cards_tab,
-                        social_cards_tab,
-                        tab_cards_tab,
-                        sortable_cards_tab,
-                        statsboxes_tab,
-                        boxes_tab,
-                        value_boxes_tab,
-                        gallery_1_tab,
-                        gallery_2_tab
-                    )
-                ),
-                controlbar = bs4DashControlbar(
-                    skin = "light",
-                    title = "My right sidebar",
-                    setSliderColor(sliderId = 1, "black"),
-                    sliderInput(
-                        inputId = "obs",
-                        label = "Number of observations:",
-                        min = 0,
-                        max = 1000,
-                        value = 500
-                    ),
-                    column(
-                        width = 12,
-                        align = "center",
-                        radioButtons(
-                            inputId = "dist",
-                            label = "Distribution type:",
-                            c(
-                                "Normal" = "norm",
-                                "Uniform" = "unif",
-                                "Log-normal" = "lnorm",
-                                "Exponential" = "exp"
-                            )
+                column(
+                    width = 12,
+                    align = "center",
+                    radioButtons(
+                        inputId = "dist",
+                        label = "Distribution type:",
+                        c(
+                            "Normal" = "norm",
+                            "Uniform" = "unif",
+                            "Log-normal" = "lnorm",
+                            "Exponential" = "exp"
                         )
                     )
+                )
+            ),
+            footer = bs4DashFooter(
+                copyrights = a(
+                    href = "https://twitter.com/divadnojnarg",
+                    target = "_blank", "@DivadNojnarg"
                 ),
-                footer = bs4DashFooter(
-                    copyrights = a(
-                        href = "https://twitter.com/divadnojnarg",
-                        target = "_blank", "@DivadNojnarg"
-                    ),
-                    right_text = "2018"
-                ),
-                title = "bs4Dash Showcase"
-            )
+                right_text = "2018"
+            ),
+            title = "bs4Dash Showcase"
         )
     )
 )
 
 server = function(input, output, session) {
-    observeEvent(input$login_button, {
-        if (input$login_user_name == "testuser" & digest(input$login_password) == "7d38e4e400a3061965069a9b1c5b220e") {
-            hide("login_page_ui", anim = TRUE)
-            show("main_page_ui", anim = TRUE)
-        } else {
-            showModal(modalDialog(title = NULL, "You have entered wrong username or password", footer = NULL, easyClose = TRUE))
-        }
-    })
     output$bigPlot <- renderPlot({
         hist(rnorm(input$bigObs))
     })
